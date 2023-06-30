@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">LoginApp</string>
+    <string name="hi">Hi!</string>
+    <string name="email">Email</string>
+    <string name="next">Continue</string>
+    <string name="or">or</string>
+    <string name="continue_with_facebook">Continue with Facebook</string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="continue_with_apple">Continue with Apple</string>
+    <string name="dont_have_an_account">Don´t have an account?</string>
+    <string name="sign_up">Sign up</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="looks_like_you_dont_have_an_account">Looks like you don´t have an account.</string>
+    <string name="Lets_create_a_new_account_for">Let´s create a new account for</string>
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="by_selecting_agree_and_continue_below">By selecting Agree and continue below,</string>
+    <string name="i_agree_to">I agree to</string>
+    <string name="term_of_service_and_privacy_policy" >Term of Service and Privacy Policy</string>
+    <string name="agree_and_continue">Agree and continue</string>
+    <string name="log_in">Log in</string>
 </resources>

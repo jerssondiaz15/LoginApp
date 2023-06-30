@@ -1,4 +1,4 @@
-package com.jersson.loginapp.ui.theme
+package com.jersson.loginapp.presentation.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

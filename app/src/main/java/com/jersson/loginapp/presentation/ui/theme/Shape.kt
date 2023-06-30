@@ -1,4 +1,4 @@
-package com.jersson.loginapp.ui.theme
+package com.jersson.loginapp.presentation.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
