@@ -45,6 +45,7 @@ fun LoginNavHost(
         ) {
             loginGraph(
                 state = {
+                    viewModel.state.value.loginNavigation.back = { navController.popBackStack() }
                     viewModel.state.value
                 }
             )

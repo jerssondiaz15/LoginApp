@@ -19,4 +19,9 @@
     <string name="term_of_service_and_privacy_policy" >Term of Service and Privacy Policy</string>
     <string name="agree_and_continue">Agree and continue</string>
     <string name="log_in">Log in</string>
+    <string name="enter_a_email">Enter an email</string>
+    <string name="enter_a_name">Enter an name</string>
+    <string name="enter_a_password">Enter an password</string>
+    <string name="our_users">Our users</string>
+    <string name="view">View</string>
 </resources>

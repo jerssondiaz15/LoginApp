@@ -1,30 +1,19 @@
 package com.jersson.loginapp.presentation.ui.init
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.material.Text
-import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import com.jersson.loginapp.presentation.ui.components.CustomButton
-import com.jersson.loginapp.presentation.ui.components.LoginButton
 import com.jersson.loginapp.presentation.ui.model.LoginState
-import com.jersson.loginapp.presentation.ui.theme.colorGreen
-import com.jersson.loginapp.presentation.ui.theme.textInfo
-import com.jersson.loginapp.presentation.ui.theme.textInfoGreen
-import com.jersson.loginapp.presentation.ui.theme.tittle
 import com.jersson.loginapp.R
+import com.jersson.loginapp.presentation.ui.theme.*
 
 @Composable
 fun InitScreen(
@@ -41,9 +30,7 @@ fun InitScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .weight(1f)
-        ) {
-
-        }
+        ){}
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -74,64 +61,13 @@ fun InitScreen(
                         .padding(26.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    OutlinedTextField(
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        value = state.loginData.email,
-                        onValueChange = {
-                            state.loginFunctions.updateData?.invoke(
-                                state.loginData.copy(
-                                    email = it
-                                )
-                            )
-                        },
-                        colors = TextFieldDefaults.outlinedTextFieldColors(
-                            focusedBorderColor = colorGreen,
-                            unfocusedBorderColor = Color.White,
-                            backgroundColor = Color.White
-                        ),
-                        keyboardOptions = KeyboardOptions(
-                            keyboardType = KeyboardType.Email,
-                            imeAction = ImeAction.Next
-                        ),
-                        shape = RoundedCornerShape(8.dp),
-                        placeholder = {
-                            Text(text = stringResource(id = R.string.email))
-                        }
-                    )
-                    Spacer(modifier = Modifier.height(16.dp))
-                    CustomButton(
-                        text = stringResource(id = R.string.next),
-                        onClick = {
-                            state.loginNavigation.logIn?.invoke()
-                        }
-                    )
+                    EmailScreen(state)
                     Spacer(modifier = Modifier.height(16.dp))
                     Text(
                         text = stringResource(id = R.string.or),
                         style = textInfo
                     )
-                    Spacer(modifier = Modifier.height(16.dp))
-                    LoginButton(
-                        text = stringResource(id = R.string.continue_with_facebook),
-                        onClick = {
-
-                        }
-                    )
-                    Spacer(modifier = Modifier.height(16.dp))
-                    LoginButton(
-                        text = stringResource(id = R.string.continue_with_google),
-                        onClick = {
-
-                        }
-                    )
-                    Spacer(modifier = Modifier.height(16.dp))
-                    LoginButton(
-                        text = stringResource(id = R.string.continue_with_apple),
-                        onClick = {
-
-                        }
-                    )
+                    SocialLoginSection()
                     Spacer(modifier = Modifier.height(32.dp))
                     Row(
                         modifier = Modifier
@@ -143,10 +79,6 @@ fun InitScreen(
                         )
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(
-                            modifier = Modifier
-                                .clickable {
-                                    state.loginNavigation.signUp?.invoke()
-                                },
                             text = stringResource(id = R.string.sign_up),
                             style = textInfoGreen
                         )
@@ -154,10 +86,7 @@ fun InitScreen(
                     Spacer(modifier = Modifier.height(24.dp))
                     Text(
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .clickable {
-
-                            },
+                            .fillMaxWidth(),
                         text = stringResource(id = R.string.forgot_your_password),
                         style = textInfoGreen
                     )

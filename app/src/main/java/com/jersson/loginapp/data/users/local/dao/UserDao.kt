@@ -16,9 +16,9 @@ interface UserDao {
     suspend fun deleteAllUsers()
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertUser(dbMovie: DbUser)
+    suspend fun insertUser(dbUser: DbUser)
 
     @Query("SELECT * FROM user_table WHERE email = :email")
-    suspend fun getDbUser(email: String): DbUser
+    suspend fun getDbUser(email: String): DbUser?
 
 }

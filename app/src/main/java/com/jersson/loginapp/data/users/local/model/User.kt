@@ -11,7 +11,7 @@ data class DbUser(
     @PrimaryKey
     @ColumnInfo(name = "id") val id: Int,
     @ColumnInfo(name = "email") val email: String?,
-    @ColumnInfo(name = "first_name") val first_name: String?,
-    @ColumnInfo(name = "last_name") val last_name: String?,
+    @ColumnInfo(name = "first_name") val firstName: String?,
+    @ColumnInfo(name = "last_name") val lastName: String?,
     @ColumnInfo(name = "avatar") val avatar: String?,
 )

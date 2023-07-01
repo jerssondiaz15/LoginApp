@@ -1,29 +1,20 @@
 package com.jersson.loginapp.presentation.ui.signup
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.SnackbarDefaults
-import androidx.compose.material.Text
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.jersson.loginapp.presentation.ui.components.CustomButton
 import com.jersson.loginapp.presentation.ui.model.LoginState
-import com.jersson.loginapp.presentation.ui.theme.colorGreen
-import com.jersson.loginapp.presentation.ui.theme.textInfo
-import com.jersson.loginapp.presentation.ui.theme.textInfoGreen
-import com.jersson.loginapp.presentation.ui.theme.tittle
 import com.jersson.loginapp.R
+import com.jersson.loginapp.presentation.ui.theme.*
 
 @Composable
 fun SignUpScreen(
@@ -41,7 +32,17 @@ fun SignUpScreen(
                 .fillMaxSize()
                 .weight(1f)
         ) {
-
+            IconButton(
+                onClick = {
+                    state.loginNavigation.back?.invoke()
+                }
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_arrow_back),
+                    contentDescription = "",
+                    tint = Color.White
+                )
+            }
         }
         Column(
             modifier = Modifier
@@ -88,61 +89,10 @@ fun SignUpScreen(
                     Text(
                         modifier = Modifier
                             .fillMaxWidth(),
-                        text = state.loginData.email,
-                        style = textInfo
+                        text = state.data.email,
+                        style = textInfoTittle
                     )
-                    Spacer(modifier = Modifier.height(16.dp))
-                    OutlinedTextField(
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        value = state.loginData.name,
-                        onValueChange = {
-                            state.loginFunctions.updateData?.invoke(
-                                state.loginData.copy(
-                                    name = it
-                                )
-                            )
-                        },
-                        colors = TextFieldDefaults.outlinedTextFieldColors(
-                            focusedBorderColor = colorGreen,
-                            unfocusedBorderColor = Color.White,
-                            backgroundColor = Color.White
-                        ),
-                        keyboardOptions = KeyboardOptions(
-                            keyboardType = KeyboardType.Email,
-                            imeAction = ImeAction.Next
-                        ),
-                        shape = RoundedCornerShape(8.dp),
-                        placeholder = {
-                            Text(text = stringResource(id = R.string.name))
-                        }
-                    )
-                    Spacer(modifier = Modifier.height(16.dp))
-                    OutlinedTextField(
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        value = state.loginData.password,
-                        onValueChange = {
-                            state.loginFunctions.updateData?.invoke(
-                                state.loginData.copy(
-                                    password = it
-                                )
-                            )
-                        },
-                        colors = TextFieldDefaults.outlinedTextFieldColors(
-                            focusedBorderColor = colorGreen,
-                            unfocusedBorderColor = Color.White,
-                            backgroundColor = Color.White
-                        ),
-                        keyboardOptions = KeyboardOptions(
-                            keyboardType = KeyboardType.Password,
-                            imeAction = ImeAction.Next
-                        ),
-                        shape = RoundedCornerShape(8.dp),
-                        placeholder = {
-                            Text(text = stringResource(id = R.string.password))
-                        }
-                    )
+                    InsertDataScreen(state)
                     Spacer(modifier = Modifier.height(16.dp))
                     Text(
                         modifier = Modifier
@@ -160,10 +110,6 @@ fun SignUpScreen(
                         )
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(
-                            modifier = Modifier
-                                .clickable {
-                                    state.loginNavigation.signUp?.invoke()
-                                },
                             text = stringResource(id = R.string.term_of_service_and_privacy_policy),
                             style = textInfoGreen
                         )
@@ -172,7 +118,7 @@ fun SignUpScreen(
                     CustomButton(
                         text = stringResource(id = R.string.agree_and_continue),
                         onClick = {
-
+                            state.loginFunctions.createUser?.invoke()
                         }
                     )
                 }

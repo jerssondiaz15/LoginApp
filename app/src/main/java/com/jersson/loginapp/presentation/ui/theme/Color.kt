@@ -8,5 +8,4 @@ val Purple700 = Color(0xFF3700B3)
 val Teal200 = Color(0xFF03DAC5)
 
 val colorGreen = Color(0xFF02c38e)
-val colorGrey = Color(0xFF939192)
-val colorGreyStrong = Color(0xFF525959)
+val borderInputError = Color(0xFFD20808)
